@@ -185,7 +185,7 @@ class Vector3:
     def __mod__(self, other: 'Vector3') -> 'Vector3':
         if type(self) != type(other):
             if __is_real_number(other):
-                return Vector2(self.__x * other, self.__y * other,self.__z * other)
+                return Vector3(self.__x % other, self.__y % other,self.__z % other)
             raise Exception("Operations cannot be performed with vectors of other dimensions.")
         return Vector3(self.__x % other.x, self.__y % other.y, self.__z % other.__z)
         
