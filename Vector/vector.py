@@ -1,3 +1,4 @@
+from __future__ import annotations
 from math import sqrt
 from typing import Any
 
@@ -81,16 +82,16 @@ class Vector2:
         """
         return sqrt(self.__x**2 + self.__y**2)
     
-    def normalize(self) -> 'Vector2':
+    def normalize(self) -> Vector2:
         """해당 평면벡터를 단위 벡터로 변환함.
 
         Returns:
             Vector2: 단위벡터로 변환된 평면벡터.
         """
-        __norm = self.norm
+        __norm = self.norm()
         return Vector2(self.__x/__norm, self.__y/__norm)
     
-    def to_3d(self) -> 'Vector3':
+    def to_3d(self) -> Vector3:
         """해당 평면벡터를 공간벡터로 변환함. Z축 성분은 0.0으로 설정됨.
 
         Returns:
@@ -98,7 +99,7 @@ class Vector2:
         """
         return Vector3(self.__x, self.__y, 0.0)
 
-    def get_components(self) -> list['Vector2']:
+    def get_components(self) -> list[Vector2]:
         """해당 평면벡터를 각각의 성분으로 나눈 후 리스트로 반환함.
 
         Returns:
@@ -106,7 +107,7 @@ class Vector2:
         """
         return [Vector2(self.__x, 0.0), Vector2(0.0, self.__y)]
 
-    def __add__(self, other: 'Vector2' | int | float) -> 'Vector2':
+    def __add__(self, other: Vector2 | int | float) -> Vector2:
         """평면벡터의 합을 계산함.
 
         Args:
@@ -124,7 +125,7 @@ class Vector2:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector2(self.__x + other.x, self.__y + other.y)
     
-    def __sub__(self, other: 'Vector2' | int | float) -> 'Vector2':
+    def __sub__(self, other: Vector2 | int | float) -> Vector2:
         """평면벡터의 차를 계산함.
 
         Args:
@@ -142,7 +143,7 @@ class Vector2:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector2(self.__x - other.x, self.__y - other.y)
     
-    def __mul__(self, other: 'Vector2' | int | float) -> 'Vector2':
+    def __mul__(self, other: Vector2 | int | float) -> Vector2:
         """평면벡터의 내적을 계산함.
 
         Args:
@@ -160,7 +161,7 @@ class Vector2:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return self.__x * other.x + self.__y * other.y
     
-    def __truediv__(self, other: 'Vector2' | int | float) -> 'Vector2':
+    def __truediv__(self, other: Vector2 | int | float) -> Vector2:
         """평면벡터의 나눗셈을 계산함.
 
         Args:
@@ -178,7 +179,7 @@ class Vector2:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector2(self.__x / other.x, self.__y / other.y)
     
-    def __floordiv__(self, other: 'Vector2' | int | float) -> 'Vector2':
+    def __floordiv__(self, other: Vector2 | int | float) -> Vector2:
         """평면벡터의 나눗셈. 소수점이 아닌, 몫을 계산.
 
         Args:
@@ -196,7 +197,7 @@ class Vector2:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector2(self.__x // other.x, self.__y // other.y)
 
-    def __mod__(self, other: 'Vector2' | int | float) -> 'Vector2':
+    def __mod__(self, other: Vector2 | int | float) -> Vector2:
         """평면벡터의 나눗셈. 소수점이 아닌, 나머지를 게산.
 
         Args:
@@ -230,7 +231,7 @@ class Vector2:
             raise TypeError("Exponents must be float or int")
         return self.norm() ** other
         
-    def __neg__(self) -> 'Vector2':
+    def __neg__(self) -> Vector2:
         """해당 평면벡터의 역벡터를 구함.
 
         Returns:
@@ -321,7 +322,7 @@ class Vector3:
         """
         return sqrt(self.__x**2 + self._y**2 +self.__z**2)
     
-    def normalize(self) -> 'Vector3':
+    def normalize(self) -> Vector3:
         """해당 공간벡터를 단위 벡터로 변환함.
 
         Returns:
@@ -330,7 +331,7 @@ class Vector3:
         __norm = self.norm()
         return Vector3(self.__x/__norm, self.__y/__norm, self.__z/__norm)
 
-    def to_2d(self) -> 'Vector2':
+    def to_2d(self) -> Vector2:
         """해당 공간벡터를 평면벡터로 변환함. Z축 성분은 소실됨.
 
         Returns:
@@ -338,7 +339,7 @@ class Vector3:
         """
         return Vector2(self.__x, self.__y)
     
-    def get_components(self) -> list['Vector3']:
+    def get_components(self) -> list[Vector3]:
         """해당 공간벡터를 각각의 성분으로 나눈 후 리스트로 반환함.
 
         Returns:
@@ -346,7 +347,7 @@ class Vector3:
         """
         return [Vector3(self.__x, 0.0, 0.0), Vector3(0.0, self.__y, 0.0), Vector3(0.0, 0.0, self.__z)]
     
-    def __add__(self, other: 'Vector3' | int | float) -> 'Vector3':
+    def __add__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 합을 계산함.
 
         Args:
@@ -364,7 +365,7 @@ class Vector3:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector3(self.__x + other.x, self.__y + other.y, self.__z + other.__z)
     
-    def __sub__(self, other: 'Vector3' | int | float) -> 'Vector3':
+    def __sub__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 차를 계산함.
 
         Args:
@@ -382,7 +383,7 @@ class Vector3:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector3(self.__x - other.x, self.__y - other.y, self.__z - other.__z)
     
-    def __mul__(self, other: 'Vector3' | int | float) -> 'Vector3':
+    def __mul__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 내적을 계산함.
 
         Args:
@@ -400,7 +401,7 @@ class Vector3:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return self.__x * other.x + self.__y * other.y + self.__z * other.__z
     
-    def __matmul__(self, other: 'Vector3' | int | float) -> 'Vector3':
+    def __matmul__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 외적을 계산함
 
         Args:
@@ -419,7 +420,7 @@ class Vector3:
         return Vector3((self.__y * other.z) - (self.__z * other.y), (self.__z * other.x) - (self.__x * other.z), (self.__x * other.y) - (self.__y * other.x))
 
 
-    def __truediv__(self, other: 'Vector3' | int | float) -> 'Vector3':
+    def __truediv__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 나눗셈을 계산함.
 
         Args:
@@ -437,7 +438,7 @@ class Vector3:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector3(self.__x / other.x, self.__y / other.y, self.__z / other.__z)
     
-    def __floordiv__(self, other: 'Vector3' | int | float) -> 'Vector3':
+    def __floordiv__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 나눗셈. 소수점이 아닌, 몫을 계산.
 
         Args:
@@ -455,7 +456,7 @@ class Vector3:
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector3(self.__x // other.x, self.__y // other.y, self.__z // other.__z)
 
-    def __mod__(self, other: 'Vector3' | int | float) -> 'Vector3':
+    def __mod__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 나눗셈. 소수점이 아닌, 나머지를 게산.
 
         Args:
@@ -489,7 +490,7 @@ class Vector3:
             raise TypeError("Exponents must be float or int")
         return self.norm() ** other
         
-    def __neg__(self) -> 'Vector3':
+    def __neg__(self) -> Vector3:
         """해당 공간벡터의 역벡터를 구함.
 
         Returns:
