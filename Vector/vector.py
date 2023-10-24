@@ -82,14 +82,14 @@ class Vector2:
         """
         return sqrt(self.__x**2 + self.__y**2)
     
-    def normalize(self) -> Vector2:
+    def normalize(self) -> None:
         """해당 평면벡터를 단위 벡터로 변환함.
 
         Returns:
             Vector2: 단위벡터로 변환된 평면벡터.
         """
         __norm = self.norm()
-        return Vector2(self.__x/__norm, self.__y/__norm)
+        self = Vector2(self.__x/__norm, self.__y/__norm)
     
     def to_3d(self) -> Vector3:
         """해당 평면벡터를 공간벡터로 변환함. Z축 성분은 0.0으로 설정됨.
@@ -238,6 +238,36 @@ class Vector2:
             Vector2: 해당 평면벡터의 역벡터.
         """
         return Vector2(-self.__x, -self.__y)
+    
+    def __eq__(self, other: Vector2) -> bool:
+        """두 평면벡터가 같은지 비교함.
+
+        Args:
+            other (Vector2): 비교할 평면벡터.
+
+        Raises:
+            TypeError: 평면벡터가 아닌 자료형과 비교하는 경우 발생하는 에러.
+
+        Returns:
+            bool: 두 벡터가 같을 시 True를 반환함. 반대의 경우 False를 반환함.
+        """
+        if type(self) != type(other):
+            raise TypeError("Operations cannot be performed with vectors of other dimensions.")
+        if (self.__x == other.x and self.__y == other.y):
+            return True
+        else:
+            return False
+        
+    def __ne__(self, other: Vector2) -> bool:
+        """두 평면벡터가 다른지를 비교함.
+
+        Args:
+            other (Vector2): 비교할 평면벡터.
+
+        Returns:
+            bool: 두 벡터가 다를 시 True를 반환함. 반대의 경우 False를 반환함.
+        """
+        return not self == other
 
 class Vector3:
     """3차원 벡터를 표현하기 위한 클래스
@@ -322,14 +352,14 @@ class Vector3:
         """
         return sqrt(self.__x**2 + self._y**2 +self.__z**2)
     
-    def normalize(self) -> Vector3:
+    def normalize(self) -> None:
         """해당 공간벡터를 단위 벡터로 변환함.
 
         Returns:
             Vector2: 단위벡터로 변환된 공간벡터.
         """
         __norm = self.norm()
-        return Vector3(self.__x/__norm, self.__y/__norm, self.__z/__norm)
+        self = Vector3(self.__x/__norm, self.__y/__norm, self.__z/__norm)
 
     def to_2d(self) -> Vector2:
         """해당 공간벡터를 평면벡터로 변환함. Z축 성분은 소실됨.
@@ -497,3 +527,33 @@ class Vector3:
             Vector3: 해당 공간벡터의 역벡터.
         """
         return Vector3(-self.__x, -self.__y, -self.__z)
+    
+    def __eq__(self, other: Vector3) -> bool:
+        """두 공간벡터가 같은지 비교함
+
+        Args:
+            other (Vector3): 비교할 공간벡터.
+
+        Raises:
+            TypeError: 공간벡터가 아닌 자료형과 비교하는 경우 발생하는 에러.
+
+        Returns:
+            bool: 두 벡터가 같을 시 True를 반환함. 반대의 경우 False를 반환함.
+        """
+        if type(self) != type(other):
+            raise TypeError("Operations cannot be performed with vectors of other dimensions.")
+        if (self.__x == other.x and self.__y == other.y and self.__z == other.z):
+            return True
+        else:
+            return False
+        
+    def __ne__(self, other: Vector3) -> bool:
+        """두 공간벡터가 다른지를 비교함.
+
+        Args:
+            other (Vector3): 비교할 공간벡터.
+
+        Returns:
+            bool: 두 벡터가 다를 시 True를 반환함. 반대의 경우 False를 반환함.
+        """
+        return not self == other
