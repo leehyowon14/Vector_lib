@@ -335,7 +335,7 @@ class Vector3:
         """
         self.__y = float(value)
 
-    @y.setter
+    @z.setter
     def z(self, value: float | int) -> None:
         """해당 공간벡터의 Z축 성분을 설정함
 
@@ -350,7 +350,7 @@ class Vector3:
         Returns:
             float: 벡터의 크기.
         """
-        return sqrt(self.__x**2 + self._y**2 +self.__z**2)
+        return sqrt(self.__x**2 + self.__y**2 +self.__z**2)
     
     def normalize(self) -> None:
         """해당 공간벡터를 단위 벡터로 변환함.
