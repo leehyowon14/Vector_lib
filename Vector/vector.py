@@ -18,7 +18,7 @@ def _is_real_num(arg: Any) -> bool:
 
 class Vector2:
     """2차원 벡터를 표현하기 위한 클래스
-    """    
+    """
     def __init__(self, x: float | int | None = 0.0, y: float | int | None = 0.0) -> None:
         """2차원 평면벡터를 정의함.
 
@@ -52,7 +52,7 @@ class Vector2:
             float: Y축 성분.
         """
         return self.__y
-    
+
     @x.setter
     def x(self, value: float | int) -> None:
         """해당 평면벡터의 X축 성분을 설정함.
@@ -70,7 +70,7 @@ class Vector2:
             value (float | int): 설정할 Y축 성분, float 자료형으로 저장됨.
         """
         self.__y = float(value)
-    
+
     def norm(self) -> float:
         """해당 평면벡터의 크기를 구함.
 
@@ -78,7 +78,7 @@ class Vector2:
             float: 벡터의 크기.
         """
         return sqrt(self.__x**2 + self.__y**2)
-    
+
     def normalize(self) -> None:
         """해당 평면벡터를 단위 벡터로 변환함.
 
@@ -211,7 +211,7 @@ class Vector2:
             if _is_real_num(other):
                 return self % Vector2(other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
-        return Vector2(self.__x % other.x, self.__y % other.y)        
+        return Vector2(self.__x % other.x, self.__y % other.y)
 
     def __pow__(self, other: int | float) -> float:
         """평면벡터의 X제곱을 계산.
@@ -249,10 +249,10 @@ class Vector2:
         Returns:
             bool: 두 벡터가 같을 시 True를 반환함. 반대의 경우 False를 반환함.
         """
-        if type(self) != type(other):
+        if isinstance(other, Vector2):
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return self.__x == other.x and self.__y == other.y
-   
+
     def __ne__(self, other: Vector2) -> bool:
         """두 평면벡터가 다른지를 비교함.
 
@@ -268,8 +268,8 @@ class Vector3:
     """3차원 벡터를 표현하기 위한 클래스
     """
     def __init__(
-            self, x: float | int | None = 0.0, 
-            y: float | int | None = 0.0, 
+            self, x: float | int | None = 0.0,
+            y: float | int | None = 0.0,
             z: float | int | None = 0.0
         ) -> None:
 
@@ -454,8 +454,8 @@ class Vector3:
                 return self @ Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector3(
-            (self.__y * other.z) - (self.__z * other.y), 
-            (self.__z * other.x) - (self.__x * other.z), 
+            (self.__y * other.z) - (self.__z * other.y),
+            (self.__z * other.x) - (self.__x * other.z),
             (self.__x * other.y) - (self.__y * other.x)
         )
 
@@ -477,7 +477,7 @@ class Vector3:
                 return self / Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return Vector3(self.__x / other.x, self.__y / other.y, self.__z / other.z)
-    
+
     def __floordiv__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 나눗셈. 소수점이 아닌, 몫을 계산.
 
