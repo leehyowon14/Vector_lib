@@ -399,7 +399,7 @@ class Vector3:
             if _is_real_num(other):
                 return self + Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
-        return Vector3(self.__x + other.x, self.__y + other.y, self.__z + other.__z)
+        return Vector3(self.__x + other.x, self.__y + other.y, self.__z + other.z)
 
     def __sub__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 차를 계산함.
@@ -417,7 +417,7 @@ class Vector3:
             if _is_real_num(other):
                 return self - Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
-        return Vector3(self.__x - other.x, self.__y - other.y, self.__z - other.__z)
+        return Vector3(self.__x - other.x, self.__y - other.y, self.__z - other.z)
 
     def __mul__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 내적을 계산함.
@@ -435,7 +435,7 @@ class Vector3:
             if _is_real_num(other):
                 return self * Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
-        return self.__x * other.x + self.__y * other.y + self.__z * other.__z
+        return self.__x * other.x + self.__y * other.y + self.__z * other.z
 
     def __matmul__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 외적을 계산함
@@ -476,7 +476,7 @@ class Vector3:
             if _is_real_num(other):
                 return self / Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
-        return Vector3(self.__x / other.x, self.__y / other.y, self.__z / other.__z)
+        return Vector3(self.__x / other.x, self.__y / other.y, self.__z / other.z)
     
     def __floordiv__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 나눗셈. 소수점이 아닌, 몫을 계산.
@@ -494,7 +494,7 @@ class Vector3:
             if _is_real_num(other):
                 return self // Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
-        return Vector3(self.__x // other.x, self.__y // other.y, self.__z // other.__z)
+        return Vector3(self.__x // other.x, self.__y // other.y, self.__z // other.z)
 
     def __mod__(self, other: Vector3 | int | float) -> Vector3:
         """공간벡터의 나눗셈. 소수점이 아닌, 나머지를 게산.
@@ -512,7 +512,7 @@ class Vector3:
             if _is_real_num(other):
                 return self % Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
-        return Vector3(self.__x % other.x, self.__y % other.y, self.__z % other.__z)
+        return Vector3(self.__x % other.x, self.__y % other.y, self.__z % other.z)
 
     def __pow__(self, other: int | float) -> float:
         """공간벡터의 X제곱을 계산.
