@@ -117,7 +117,7 @@ class Vector2:
         Returns:
             Vector2: 연산 결과.
         """
-        if isinstance(other, Vector2):
+        if not isinstance(other, Vector2):
             if _is_real_num(other):
                 return self + Vector2(other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -135,7 +135,7 @@ class Vector2:
         Returns:
             Vector2: 연산 결과.
         """
-        if isinstance(other, Vector2):
+        if not isinstance(other, Vector2):
             if _is_real_num(other):
                 return self - Vector2(other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -153,7 +153,7 @@ class Vector2:
         Returns:
             float: 연산 결과. (스칼라)
         """
-        if isinstance(other, Vector2):
+        if not isinstance(other, Vector2):
             if _is_real_num(other):
                 return self * Vector2(other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -171,7 +171,7 @@ class Vector2:
         Returns:
             Vector2: 연산 결과.
         """
-        if isinstance(other, Vector2):
+        if not isinstance(other, Vector2):
             if _is_real_num(other):
                 return self / Vector2(other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -189,7 +189,7 @@ class Vector2:
         Returns:
             Vector2: 연산 결과
         """
-        if isinstance(other, Vector2):
+        if not isinstance(other, Vector2):
             if _is_real_num(other):
                 return self // Vector2(other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -207,7 +207,7 @@ class Vector2:
         Returns:
             Vector2: 연산 결과.
         """
-        if isinstance(other, Vector2):
+        if not isinstance(other, Vector2):
             if _is_real_num(other):
                 return self % Vector2(other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -249,7 +249,7 @@ class Vector2:
         Returns:
             bool: 두 벡터가 같을 시 True를 반환함. 반대의 경우 False를 반환함.
         """
-        if isinstance(other, Vector2):
+        if not isinstance(other, Vector2):
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return self.__x == other.x and self.__y == other.y
 
@@ -395,7 +395,7 @@ class Vector3:
         Returns:
             Vector3: 연산 결과.
         """
-        if isinstance(other, Vector3):
+        if not isinstance(other, Vector3):
             if _is_real_num(other):
                 return self + Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -413,7 +413,7 @@ class Vector3:
         Returns:
             Vector3: 연산 결과.
         """
-        if isinstance(other, Vector3):
+        if not isinstance(other, Vector3):
             if _is_real_num(other):
                 return self - Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -431,7 +431,7 @@ class Vector3:
         Returns:
             float: 연산 결과. (스칼라)
         """
-        if isinstance(other, Vector3):
+        if not isinstance(other, Vector3):
             if _is_real_num(other):
                 return self * Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -449,7 +449,7 @@ class Vector3:
         Returns:
             Vector3: 연산 결과.
         """
-        if isinstance(other, Vector3):
+        if not isinstance(other, Vector3):
             if _is_real_num(other):
                 return self @ Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -472,7 +472,7 @@ class Vector3:
         Returns:
             Vector3: 연산 결과.
         """
-        if isinstance(other, Vector3):
+        if not isinstance(other, Vector3):
             if _is_real_num(other):
                 return self / Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -490,7 +490,7 @@ class Vector3:
         Returns:
             Vector3: 연산 결과
         """
-        if isinstance(other, Vector3):
+        if not isinstance(other, Vector3):
             if _is_real_num(other):
                 return self // Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -508,7 +508,7 @@ class Vector3:
         Returns:
             Vector3: 연산 결과.
         """
-        if isinstance(other, Vector3):
+        if not isinstance(other, Vector3):
             if _is_real_num(other):
                 return self % Vector3(other, other, other)
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
@@ -550,7 +550,7 @@ class Vector3:
         Returns:
             bool: 두 벡터가 같을 시 True를 반환함. 반대의 경우 False를 반환함.
         """
-        if isinstance(other, Vector3):
+        if not isinstance(other, Vector3):
             raise TypeError("Operations cannot be performed with vectors of other dimensions.")
         return self.__x == other.x and self.__y == other.y and self.__z == other.z
 
