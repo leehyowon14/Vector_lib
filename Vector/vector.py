@@ -263,6 +263,11 @@ class Vector2:
             bool: 두 벡터가 다를 시 True를 반환함. 반대의 경우 False를 반환함.
         """
         return not self == other
+    
+    def __iter__(self):
+        yield self.__x
+        yield self.__y
+
 
 class Vector3:
     """3차원 벡터를 표현하기 위한 클래스
@@ -564,3 +569,8 @@ class Vector3:
             bool: 두 벡터가 다를 시 True를 반환함. 반대의 경우 False를 반환함.
         """
         return not self == other
+
+    def __iter__(self):
+        yield self.__x
+        yield self.__y
+        yield self.__z
